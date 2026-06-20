@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bogota AI Governance Monitor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Colombia public-sector AI oversight</p>
+          <h1 data-i18n="title">Bogota AI Governance Monitor</h1>
+          <p class="lead" data-i18n="lead">
+            Scan public announcements, compare them against a Colombia-specific governance checklist, and surface potential gaps with citations.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <label class="lang-switch" for="languageSelect">
+            <span data-i18n="languageLabel">Language</span>
+            <select id="languageSelect" aria-label="Language selector">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </label>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-value" id="sourceCount">0</span>
+              <span class="stat-label" data-i18n="sourcesScanned">Sources scanned</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="gapCount">0</span>
+              <span class="stat-label" data-i18n="potentialGaps">Potential gaps</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="coverageValue">0%</span>
+              <span class="stat-label" data-i18n="coverage">Coverage</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="card controls-card">
+          <div class="section-heading">
+            <h2 data-i18n="investigateTitle">Start an investigation</h2>
+            <p data-i18n="investigateSubtitle">Choose a Bogotá or national public-sector source and generate a concise compliance summary.</p>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span data-i18n="sourceLabel">Source</span>
+              <select id="sourceSelect"></select>
+            </label>
+            <label>
+              <span data-i18n="modeLabel">Workflow</span>
+              <select id="modeSelect">
+                <option value="single" data-i18n="modeSingle">Single source analysis</option>
+                <option value="compare" data-i18n="modeCompare">Compare with Bogotá pilot</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="runButton" class="primary-button" type="button" data-i18n="runButton">Run analysis</button>
+            <button id="loadDemoButton" class="ghost-button" type="button" data-i18n="loadDemoButton">Load Bogotá pilot</button>
+          </div>
+        </section>
+
+        <section class="card summary-card">
+          <div class="section-heading">
+            <h2 data-i18n="summaryTitle">Summary</h2>
+            <p data-i18n="summarySubtitle">Deterministic, citation-backed results with optional AI-style wording, designed to stay lightweight.</p>
+          </div>
+          <div class="score-ring" aria-label="Governance score">
+            <div class="score-ring-inner">
+              <span class="score-number" id="scoreValue">0</span>
+              <span class="score-label" data-i18n="scoreLabel">Governance score</span>
+            </div>
+          </div>
+          <p class="score-text" id="scoreText" data-i18n="scorePrompt">Select a source to generate the first report.</p>
+        </section>
+      </main>
+
+      <section class="card report-card">
+        <div class="section-heading">
+          <h2 data-i18n="reportTitle">Evidence report</h2>
+          <p data-i18n="reportSubtitle">Potential gaps are highlighted with source-backed notes and Colombia-specific context.</p>
+        </div>
+        <div id="reportList" class="report-list"></div>
+      </section>
+
+      <section class="card checklist-card">
+        <div class="section-heading">
+          <h2 data-i18n="checklistTitle">Colombia governance checklist</h2>
+          <p data-i18n="checklistSubtitle">The app checks whether public disclosures mention transparency, oversight, consent, and reporting.</p>
+        </div>
+        <div id="checklistList" class="checklist-list"></div>
+      </section>
+
+      <section class="card eval-card">
+        <div class="section-heading">
+          <h2 data-i18n="evalTitle">Evaluation metrics</h2>
+          <p data-i18n="evalSubtitle">Computed metrics for the current analysis run, supporting the narrative that the tool is practical.</p>
+        </div>
+        <div class="eval-grid" id="evalGrid">
+          <div class="stat-card">
+            <span class="stat-value" id="evalCoverage">--</span>
+            <span class="stat-label" data-i18n="evalSourceCoverage">Source coverage</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="evalPrecision">--</span>
+            <span class="stat-label" data-i18n="evalAlertPrecision">Alert precision</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="evalExtraction">--</span>
+            <span class="stat-label" data-i18n="evalExtractionAccuracy">Extraction accuracy</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="evalPerformance">--</span>
+            <span class="stat-label" data-i18n="evalPerformance">Response time</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
